@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">stARs Trip</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu">MainActivity</string>
+    <string name="menu_title">MENU</string>
+    <string name="btnPrevious">Back</string>
+    <string name="btnNext">Next</string>
+    <string name="btnHome">Home</string>
+    <string name="btnMenu">Menu</string>
+    <string name="btnFinish">Finish</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="navi_button">Navigation</string>
+    <string name="trans_button">Translation</string>
+</resources>

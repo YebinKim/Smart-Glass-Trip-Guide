@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_slider_screen"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.hanium.glass.MainActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:text="@string/menu_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/slide_title"
+        android:typeface="sans" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/black_overlay"
+        android:drawableLeft="@drawable/icon_navi"
+        android:drawablePadding="18dip"
+        android:gravity="center_vertical"
+        android:onClick="onButtonNavigationClicked"
+        android:text="@string/navi_button"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/black_overlay"
+        android:drawableLeft="@drawable/icon_trans"
+        android:drawablePadding="18dip"
+        android:gravity="center_vertical"
+        android:onClick="onButtonTranslationClicked"
+        android:text="@string/trans_button"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+
+</LinearLayout>
