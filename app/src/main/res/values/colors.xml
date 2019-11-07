@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#804d97ff</color>
-    <color name="colorPrimaryLight">#DAE2F2</color>
+    <color name="colorPrimaryDark">#4d97ff</color>
+    <color name="colorPrimaryLight">#80dae2f2</color>
     <color name="colorAccent">#fb142e74</color>
     <color name="bg_slider_screen">#000000</color>
     <color name="dot_inactive_screen">#DFDCEC</color>

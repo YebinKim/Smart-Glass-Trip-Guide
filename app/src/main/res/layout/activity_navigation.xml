@@ -12,14 +12,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView10"
+        <SurfaceView
+            android:id="@+id/surfaceView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="-52dp"
-            android:layout_toStartOf="@+id/timeIcon"
-            app:srcCompat="@color/bg_slider_screen" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -27,38 +26,125 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/remainView1"
                 android:layout_width="215dp"
                 android:layout_height="118dp"
-                android:background="@drawable/round_view"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="42dp"
-                android:layout_marginTop="193dp" />
+                android:layout_marginTop="192dp"
+                android:background="@drawable/round_view" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/remainIcon1"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_alignStart="@+id/remainView1"
+                android:layout_alignTop="@+id/remainView1"
+                android:layout_alignBottom="@+id/remainView1"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="28dp"
+                app:srcCompat="@drawable/arrow_right" />
+
+            <TextView
+                android:id="@+id/remainText1"
+                android:layout_width="93dp"
+                android:layout_height="44dp"
+                android:layout_alignTop="@+id/remainView1"
+                android:layout_alignEnd="@+id/remainView1"
+                android:layout_alignBottom="@+id/remainView1"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="21dp"
+                android:layout_marginBottom="40dp"
+                android:layout_toEndOf="@+id/remainIcon1"
+                android:text="50m"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/remainView2"
                 android:layout_width="215dp"
                 android:layout_height="78dp"
-                android:background="@drawable/round_view"
-                android:layout_below="@+id/imageView7"
+                android:layout_below="@+id/remainView1"
                 android:layout_alignEnd="@+id/timeIcon"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="42dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="-173dp" />
+                android:layout_marginEnd="-173dp"
+                android:background="@drawable/round_view" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/remainIcon2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignStart="@+id/remainView2"
+                android:layout_alignTop="@+id/remainView2"
+                android:layout_alignBottom="@+id/remainView2"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="15dp"
+                app:srcCompat="@drawable/arrow_left" />
+
+            <TextView
+                android:id="@+id/remainText2"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignTop="@+id/remainView2"
+                android:layout_alignEnd="@+id/remainView2"
+                android:layout_alignBottom="@+id/remainView2"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/remainIcon2"
+                android:text="25m"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/remainView3"
                 android:layout_width="215dp"
                 android:layout_height="78dp"
-                android:background="@drawable/round_view"
-                android:layout_below="@+id/imageView8"
+                android:layout_below="@+id/remainView2"
                 android:layout_alignEnd="@+id/timeIcon"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="42dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="-173dp" />
+                android:layout_marginEnd="-173dp"
+                android:background="@drawable/round_view" />
+
+            <ImageView
+                android:id="@+id/remainIcon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignStart="@+id/remainView3"
+                android:layout_alignTop="@+id/remainView3"
+                android:layout_alignBottom="@+id/remainView3"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="15dp"
+                app:srcCompat="@drawable/arrow_straight" />
+
+            <TextView
+                android:id="@+id/remainText3"
+                android:layout_width="83dp"
+                android:layout_height="38dp"
+                android:layout_alignTop="@+id/remainView3"
+                android:layout_alignEnd="@+id/remainView3"
+                android:layout_alignBottom="@+id/remainView3"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="27dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/remainIcon"
+                android:text="10m"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/infoView"
@@ -82,11 +168,13 @@
                 android:id="@+id/timeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="95dp"
-                android:layout_marginBottom="3dp"
-                android:text="TextView"
+                android:layout_marginStart="11dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toEndOf="@+id/timeIcon"
+                android:layout_toRightOf="@+id/timeIcon"
+                android:text="PM 12:00"
                 android:textColor="@android:color/white"
                 android:textSize="34sp" />
 
@@ -104,11 +192,13 @@
                 android:id="@+id/destText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="362dp"
-                android:layout_marginBottom="3dp"
-                android:text="TextView"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toEndOf="@+id/destIcon"
+                android:layout_toRightOf="@+id/destIcon"
+                android:text="123km"
                 android:textColor="@android:color/white"
                 android:textSize="34sp" />
 
@@ -125,6 +215,7 @@
                 app:srcCompat="@drawable/ic_x" />
 
         </RelativeLayout>
+
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

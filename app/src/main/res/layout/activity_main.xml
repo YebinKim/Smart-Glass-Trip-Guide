@@ -19,6 +19,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/slide_title"
+        android:textStyle="bold"
         android:typeface="sans" />
 
     <Button
