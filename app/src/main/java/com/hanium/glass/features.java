@@ -4,42 +4,55 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+class Geometry {
+    private Double longitude;
+    private Double latitude;
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+}
+
 public class features {
-    private ArrayList geometry;
     private String type;
-    private ArrayList coordinates;
-    private String longitude;
-    private String latitude;
+    private Geometry coordinates = new Geometry();
 
     public String getType() {
         return type;
     }
 
-    public ArrayList getCoordinates() {
+    public Geometry getCoordinates() {
         return coordinates;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public String getLatitude() {
-        return latitude;
     }
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setCoordinates(ArrayList coordinates) {
+
+    public void setCoordinates(Geometry coordinates) {
         this.coordinates = coordinates;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
+    public void setCoordinates(String geoString) {
+        geoString = geoString.replace("[", "");
+        geoString = geoString.replace("]", "");
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+        String geoArr[] = geoString.split(",");
+
+        this.coordinates.setLongitude(Double.parseDouble(geoArr[0]));
+        this.coordinates.setLatitude(Double.parseDouble(geoArr[1]));
     }
 }

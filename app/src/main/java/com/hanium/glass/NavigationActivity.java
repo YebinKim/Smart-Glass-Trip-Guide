@@ -1,15 +1,12 @@
 package com.hanium.glass;
 
-import android.graphics.Movie;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Size;
-import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,18 +18,11 @@ import java.util.ArrayList;
 
 public class NavigationActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
-    private static final Size[] RESOLUTIONS = {
-            new Size(640, 480),
-            new Size(1280, 720),
-            new Size(1920, 1080),
-    };
-
-    private int mResolutionIndex;
-
+    private static final Size RESOLUTION = new Size(1920, 1080);
     private SurfaceHolder mSurfaceHolder;
     private Camera mCamera;
 
-    private ArrayList<features> geoArray = new ArrayList<>();;
+    private ArrayList<features> geoList = new ArrayList<>();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +32,20 @@ public class NavigationActivity extends AppCompatActivity implements SurfaceHold
         SurfaceView surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
         mSurfaceHolder = surfaceView.getHolder();
         mSurfaceHolder.addCallback(this);
+
+        jsonParsing(getJsonString());
+
+        Log.d ("Json", geoList.get(0).getType());
+        Log.d ("Json", geoList.get(0).getCoordinates().getLongitude().toString());
+        Log.d ("Json", geoList.get(0).getCoordinates().getLatitude().toString());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mResolutionIndex = 0;
     }
 
+    // 카메라 설정
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         mCamera = Camera.open();
@@ -74,40 +70,55 @@ public class NavigationActivity extends AppCompatActivity implements SurfaceHold
         }
     }
 
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (event.getKeyCode()) {
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    mResolutionIndex--;
-                    changeResolution();
-                    break;
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    mResolutionIndex++;
-                    changeResolution();
-                    break;
-                default:
-                    break;
-            }
-        }
-        return super.dispatchKeyEvent(event);
-    }
-
     private void changeResolution() {
         mCamera.stopPreview();
         Camera.Parameters parameters = mCamera.getParameters();
-        Size resolution = getResolution();
-        parameters.setPreviewSize(resolution.getWidth(), resolution.getHeight());
+        parameters.setPreviewSize(RESOLUTION.getWidth(), RESOLUTION.getHeight());
         mCamera.setParameters(parameters);
         mCamera.startPreview();
     }
 
-    private Size getResolution() {
-        if (RESOLUTIONS.length <= mResolutionIndex) {
-            mResolutionIndex = 0;
-        } else if (mResolutionIndex < 0) {
-            mResolutionIndex = RESOLUTIONS.length - 1;
+    // - JSON 통신 설정
+    private String getJsonString() {
+        String json = "";
+
+        try {
+            InputStream is = getAssets().open("features.json");
+            int fileSize = is.available();
+
+            byte[] buffer = new byte[fileSize];
+            is.read(buffer);
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        return RESOLUTIONS[mResolutionIndex];
+
+        return json;
+    }
+
+    // JSON 파싱
+    private void jsonParsing(String json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+
+            JSONArray featArray = jsonObject.getJSONArray("features");
+
+            for(int i = 0; i < featArray.length(); i++) {
+                JSONObject featObject = featArray.getJSONObject(i);
+
+                JSONObject geoObject = featObject.getJSONObject("geometry");
+
+                features feature = new features();
+
+                feature.setType(geoObject.getString("type"));
+                feature.setCoordinates(geoObject.getString("coordinates"));
+
+                geoList.add(feature);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
