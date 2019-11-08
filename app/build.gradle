@@ -35,4 +35,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/com.skt.Tmap_1.60.jar')
     compile files('libs/BT300Ctrl.jar')
+    compile files('libs/MaxstAR.jar')
 }
