@@ -179,7 +179,7 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/destIcon"
+                android:id="@+id/distIcon"
                 android:layout_width="25dp"
                 android:layout_height="33dp"
                 android:layout_alignTop="@+id/timeIcon"
@@ -191,15 +191,15 @@
                 app:srcCompat="@drawable/ic_destination" />
 
             <TextView
-                android:id="@+id/destText"
+                android:id="@+id/distText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="13dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginBottom="3dp"
-                android:layout_toEndOf="@+id/destIcon"
-                android:layout_toRightOf="@+id/destIcon"
+                android:layout_toEndOf="@+id/distIcon"
+                android:layout_toRightOf="@+id/distIcon"
                 android:text="123km"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
